@@ -3,18 +3,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
 # Sample Movie Data
-movies_data = {
-    'Title': ['Movie1', 'Movie2', 'Movie3', 'Movie4', 'Movie5'],
-    'Genre': ['Action', 'Comedy', 'Action', 'Drama', 'Comedy'],
-    'Director': ['Director1', 'Director2', 'Director1', 'Director3', 'Director2'],
-    'Description': ['Action-packed movie with thrilling scenes',
-                    'A hilarious comedy that will make you laugh',
-                    'Another action movie with intense sequences',
-                    'Drama film with emotional storyline',
-                    'Funny comedy with great performances']
-}
+movies = pd.read_csv("/kaggle/input/the-movies-dataset/movies_metadata.csv",
+                    usecols=["id","overview","title","vote_average","vote_count","release_date"])
 
-movies_df = pd.DataFrame(movies_data)
+movies.head()
 
 # User's Preferences
 user_preferences = {'Genre': 'Action', 'Director': 'Director1'}
